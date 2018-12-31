@@ -3,6 +3,9 @@ This package comes with a translation manager [laravel-translation-manager](http
 
 ## Setup
 -  Install the package.
+```
+composer require motia/laravel-translation-exporter
+```
 - (optional if `autodiscovery` is on) Add the service provider `Motia\TransExport\TransExportProvider`
 - Publish the config file using the command 
 ```
