@@ -4,7 +4,7 @@ This package comes with a translation manager [laravel-translation-manager](http
 ## Setup
 -  Install the package.
 ```
-composer require motia/laravel-translation-exporter
+composer require motia/laravel-translations-port
 ```
 - (optional if `autodiscovery` is on) Add the service provider `Motia\TranslationsPort\TranslationsPortProvider`
 - Publish the config file using the command 
@@ -46,6 +46,7 @@ TranslationsPortController::routes([
 // on your client app
 axios.post('/missing', {
     key: 'namespaced.key',
-    locale: 'en'
+    locale: 'en',
+    group: 'client_app' // optional, defaults config('translations-port.groups')[0].
 })
 ```
