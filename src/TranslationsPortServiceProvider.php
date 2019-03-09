@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Motia\TranslationsPort\Loaders\LangFileLoader;
 use Motia\TranslationsPort\Loaders\MessagesLoaderContract;
 
-class TranslationsLoaderServiceProvider extends ServiceProvider
+class TranslationsPortServiceProvider extends ServiceProvider
 {
   public function register()
   {
