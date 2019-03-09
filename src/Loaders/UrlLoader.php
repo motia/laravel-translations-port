@@ -1,6 +1,6 @@
 <?php
 
-namespace Motia\TranslationsManager\Loaders;
+namespace Motia\TranslationsPort\Loaders;
 
 
 class UrlLoader implements MessagesLoaderContract
@@ -12,7 +12,7 @@ class UrlLoader implements MessagesLoaderContract
    */
   public function messages($locale, $group)
   {
-    $json = file_get_contents(config('trans-export.rest_url')."/$locale?group=$group");
+    $json = file_get_contents(config('translations-port.rest_url')."/$locale?group=$group");
     if (!$json) {
       throw new \RuntimeException('no response');
     }

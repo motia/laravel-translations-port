@@ -1,6 +1,6 @@
 <?php
 
-namespace Motia\TranslationsManager\Loaders;
+namespace Motia\TranslationsPort\Loaders;
 
 use Illuminate\Support\Arr;
 use Vsch\TranslationManager\Models\Translation;

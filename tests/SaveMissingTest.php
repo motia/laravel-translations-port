@@ -15,7 +15,7 @@ class SaveMissingTest extends TestCase
         $router->group([
             'prefix' => 'test-export-test'
         ], function () use ($router) {
-            $router->post('missing', \Motia\TranslationsManager\Controllers\MissingMessagesController::class.'@missing');
+            $router->post('missing', \Motia\TranslationsPort\Controllers\MissingMessagesController::class.'@missing');
         });
 
         $key = Str::random(10);

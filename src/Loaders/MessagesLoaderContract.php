@@ -1,6 +1,6 @@
 <?php
 
-namespace Motia\TranslationsManager\Loaders;
+namespace Motia\TranslationsPort\Loaders;
 
 
 interface MessagesLoaderContract

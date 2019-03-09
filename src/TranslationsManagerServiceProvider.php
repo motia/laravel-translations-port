@@ -1,23 +1,23 @@
 <?php
 
-namespace Motia\TranslationsManager;
+namespace Motia\TranslationsPort;
 
 
 use Illuminate\Support\ServiceProvider;
-use Motia\TranslationsManager\Loaders\LangFileLoader;
-use Motia\TranslationsManager\Loaders\MessagesLoaderContract;
+use Motia\TranslationsPort\Loaders\LangFileLoader;
+use Motia\TranslationsPort\Loaders\MessagesLoaderContract;
 
 class TranslationsLoaderServiceProvider extends ServiceProvider
 {
   public function register()
   {
     $this->mergeConfigFrom(
-      $this->getConfigFilePath(), 'trans-export'
+      $this->getConfigFilePath(), 'translations-port'
     );
 
     $this->app->singleton(
       MessagesLoaderContract::class,
-      config('trans-export.loader', LangFileLoader::class)
+      config('translations-port.loader', LangFileLoader::class)
     );
 
   }
@@ -28,7 +28,7 @@ class TranslationsLoaderServiceProvider extends ServiceProvider
         Commands\ImportFrontendTranslations::class,
     ]);
     $this->publishes([
-        $this->getConfigFilePath() => config_path('trans-export.php'),
+        $this->getConfigFilePath() => config_path('translations-port.php'),
     ]);
   }
 

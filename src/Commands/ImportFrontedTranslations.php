@@ -1,9 +1,9 @@
 <?php
 
-namespace Motia\TranslationsManager\Commands;
+namespace Motia\TranslationsPort\Commands;
 
 use Illuminate\Support\Facades\Artisan;
-use Motia\TranslationsManager\Decoder;
+use Motia\TranslationsPort\Decoder;
 use Symfony\Component\Yaml\Yaml;
 
 class ImportFrontendTranslations extends BaseCommand {

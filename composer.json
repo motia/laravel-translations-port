@@ -1,7 +1,7 @@
 {
-    "name": "motia/laravel-translations-manager",
-    "description": "Utility package to use your translations in your laravel backend and client app at the same time.",
-    "keywords": ["translations", "i18n", "spa"],
+    "name": "motia/laravel-translations-port",
+    "description": "Import/Export your laravel translations(including the missing ones!) to/from your separate frontend apps.",
+    "keywords": ["translations", "i18n", "spa", "import", "export", "translations manager", "missing translations", "laravel", "vue-i18n"],
     "license": "MIT",
     "require": {},
     "require-dev": {
@@ -10,7 +10,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Motia\\TranslationsManager\\": "src/"
+            "Motia\\TranslationsPort\\": "src/"
         }
     },
     "autoload-dev": {
@@ -21,7 +21,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Motia\\TranslationsManager\\TranslationsManagerServiceProvider"
+                "Motia\\TranslationsPort\\TranslationsPortServiceProvider"
             ]
         }
     },

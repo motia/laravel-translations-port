@@ -1,6 +1,6 @@
 <?php
 
-namespace Motia\TranslationsManager\Loaders;
+namespace Motia\TranslationsPort\Loaders;
 
 
 class LangFileLoader implements MessagesLoaderContract

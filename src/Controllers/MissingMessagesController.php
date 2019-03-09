@@ -1,6 +1,6 @@
 <?php
 
-namespace Motia\TranslationsManager\Controllers;
+namespace Motia\TranslationsPort\Controllers;
 
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class MissingMessagesController
      */
     public function bulkMissing(Request $request)
     {
-        $allowedGroups = config('trans-export.groups');
+        $allowedGroups = config('translations-port.groups');
         if (!count($allowedGroups)) {
             throw new \Exception('no groups are allowed');
         }
@@ -26,7 +26,7 @@ class MissingMessagesController
             'items' => 'min:1|max:20',
             'group' => 'in|' . implode($allowedGroups),
             'items.*.key' => 'required',
-            'items.*.locale' => 'required|in:' . implode(',', config('trans-export.locales')),
+            'items.*.locale' => 'required|in:' . implode(',', config('translations-port.locales')),
         ]);
 
         $group = $inputs['group'] ?? $allowedGroups[0];
@@ -47,10 +47,10 @@ class MissingMessagesController
     {
         $inputs = $this->validate($request, [
             'key' => 'required',
-            'locale' => 'required|in:' . implode(',', config('trans-export.locales')),
+            'locale' => 'required|in:' . implode(',', config('translations-port.locales')),
         ]);
 
-        $group = config('trans-export.group');
+        $group = config('translations-port.group');
 
         return Translation::query()->firstOrCreate(array_merge($inputs, ['group' => $group]));
     }

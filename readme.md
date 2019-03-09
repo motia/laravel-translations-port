@@ -6,10 +6,10 @@ This package comes with a translation manager [laravel-translation-manager](http
 ```
 composer require motia/laravel-translation-exporter
 ```
-- (optional if `autodiscovery` is on) Add the service provider `Motia\TranslationsManager\TranslationsManagerProvider`
+- (optional if `autodiscovery` is on) Add the service provider `Motia\TranslationsPort\TranslationsPortProvider`
 - Publish the config file using the command 
 ```
-php artisan vendor:publish --provider="Motia\TranslationsManager\TranslationsManagerProvider"
+php artisan vendor:publish --provider="Motia\TranslationsPort\TranslationsPortProvider"
 ```
 
 - Setup and configure [vsch/laravel-translation-manager](https://github.com/vsch/laravel-translation-manager)
@@ -33,10 +33,10 @@ This package comes with a controller to add missing translations and a helper fu
 // routes/api.php
 <?php
 
-use Motia\TranslationsManager\Controller as TranslationsManagerController;
+use Motia\TranslationsPort\Controller as TranslationsPortController;
 
-TranslationsManagerController::routes([
-   'prefix' => 'trans-export',
+TranslationsPortController::routes([
+   'prefix' => 'translations-port',
    'middleware' => 'cors',
 ]);
 

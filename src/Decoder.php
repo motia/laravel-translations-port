@@ -1,6 +1,6 @@
 <?php
 
-namespace Motia\TranslationsManager;
+namespace Motia\TranslationsPort;
 
 
 use Symfony\Component\Yaml\Yaml;

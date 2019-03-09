@@ -3,12 +3,12 @@
 
 /**
  * Possible values for repository are :
- *  - \Motia\TranslationsManager\Repositories\FileRepository::class
- *  - \Motia\TranslationsManager\Repositories\VschTranslationsLoader::class
- *  - \Motia\TranslationsManager\Repositories\RestRepository::class
+ *  - \Motia\TranslationsPort\Repositories\FileRepository::class
+ *  - \Motia\TranslationsPort\Repositories\VschTranslationsLoader::class
+ *  - \Motia\TranslationsPort\Repositories\RestRepository::class
  */
 return [
-    'loader' => \Motia\TranslationsManager\Loaders\VschTranslationsLoader::class,
+    'loader' => \Motia\TranslationsPort\Loaders\VschTranslationsLoader::class,
     'rest_url' => null,
     'locales' => ['en'],
     'import' => [

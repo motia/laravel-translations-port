@@ -1,12 +1,12 @@
 <?php
 
-namespace Motia\TranslationsManager\Controllers;
+namespace Motia\TranslationsPort\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Motia\TranslationsManager\Encoder;
-use Motia\TranslationsManager\Loaders\MessagesLoaderContract;
+use Motia\TranslationsPort\Encoder;
+use Motia\TranslationsPort\Loaders\MessagesLoaderContract;
 
 class MessagesController extends Controller
 {
@@ -82,7 +82,7 @@ class MessagesController extends Controller
      */
     private function getLocale(Request $request)
     {
-        $locales = config('trans-export.locales');
+        $locales = config('translations-port.locales');
         $locale = $request->query('locale')
             ?: $request->route('locale');
 
@@ -101,14 +101,14 @@ class MessagesController extends Controller
      */
     private function getGroup(Request $request)
     {
-        $groups = config('trans-export.groups');
+        $groups = config('translations-port.groups');
         if (!count($groups)) {
             throw new \Exception('no groups..');
         }
 
         $group = $request->query('group')
             ?: $request->route('group')
-            ?: config('trans-export.groups')[0];
+            ?: config('translations-port.groups')[0];
         if ($group && !in_array($group, $groups)) {
             throw new \Exception("group $group not found");
         }

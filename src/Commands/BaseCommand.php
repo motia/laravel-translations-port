@@ -1,13 +1,13 @@
 <?php
 
-namespace Motia\TranslationsManager\Commands;
+namespace Motia\TranslationsPort\Commands;
 
 use Illuminate\Console\Command;
 
 abstract class BaseCommand extends Command
 {
     protected function getTranslationKey() {
-        return config('trans-export.group');
+        return config('translations-port.group');
     }
 
     protected function resolveLaravelFile($locale) {
@@ -15,12 +15,12 @@ abstract class BaseCommand extends Command
     }
 
     protected function locales() {
-        return array_wrap(config('trans-export.locales'));
+        return array_wrap(config('translations-port.locales'));
     }
 
     protected function exportFormat()
     {
-        return config('trans-export.export.format');
+        return config('translations-port.export.format');
     }
 
 
