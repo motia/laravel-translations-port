@@ -1,6 +1,6 @@
 <?php
 
-namespace Motia\TransExport\Commands;
+namespace Motia\TranslationsManager\Commands;
 
 use Illuminate\Console\Command;
 
@@ -67,5 +67,9 @@ abstract class BaseCommand extends Command
      */
     protected function resolveExportPath($locale) {
         return $this->resolvePath($locale, 'export');
+    }
+
+    protected function shouldUnlinkPhpFile() {
+        return false;
     }
 }

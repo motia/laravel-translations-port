@@ -1,12 +1,12 @@
 <?php
 
+use Illuminate\Support\Str;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Vsch\TranslationManager\Models\Translation;
 
 class SaveMissingTest extends TestCase
 {
-    private $savedTransaltion = null;
+    private $savedTranslation = null;
 
 
     public function testSaveMissingSuccess()
@@ -15,10 +15,10 @@ class SaveMissingTest extends TestCase
         $router->group([
             'prefix' => 'test-export-test'
         ], function () use ($router) {
-            $router->post('missing', '\Motia\TransExport\Controller@missing');
+            $router->post('missing', \Motia\TranslationsManager\Controllers\MissingMessagesController::class.'@missing');
         });
 
-        $key = str_random(10);
+        $key = Str::random(10);
 
         $testData = [
             'locale' => 'en',
@@ -29,16 +29,19 @@ class SaveMissingTest extends TestCase
             ->assertJson($testData);
 
         $this->assertDatabaseHas((new Translation)->getTable(), $testData);
-        $this->savedTransaltion = $key;
+        $this->savedTranslation = $key;
     }
 
-    protected function tearDown() {
+    /**
+     * @throws Exception
+     */
+    protected function tearDown(): void {
         $item = Translation::query()->where([
-            'key' => $this->savedTransaltion
+            'key' => $this->savedTranslation
         ])->first();
 
         $item->delete();
 
-        parent::tearDown();        
+        parent::tearDown();
     }
 }

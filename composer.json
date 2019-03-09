@@ -1,17 +1,16 @@
 {
-    "name": "motia/laravel-translation-exporter",
+    "name": "motia/laravel-translations-manager",
     "description": "Utility package to use your translations in your laravel backend and client app at the same time.",
     "keywords": ["translations", "i18n", "spa"],
     "license": "MIT",
-    "require": {
-        "vsch/laravel-translation-manager": "^2.6"
-    },
+    "require": {},
     "require-dev": {
+        "vsch/laravel-translation-manager": "^2.6",
         "symfony/yaml": "^4.0"
     },
     "autoload": {
         "psr-4": {
-            "Motia\\TransExport\\": "src/"
+            "Motia\\TranslationsManager\\": "src/"
         }
     },
     "autoload-dev": {
@@ -22,8 +21,11 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Motia\\TransExport\\TransExportProvider"
+                "Motia\\TranslationsManager\\TranslationsManagerServiceProvider"
             ]
         }
+    },
+    "suggest": {
+        "vsch/laravel-translation-manager": "Required to the translation manager UI and use VschTranslationsLoader"
     }
 }

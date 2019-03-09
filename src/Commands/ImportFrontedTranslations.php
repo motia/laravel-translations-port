@@ -1,8 +1,9 @@
 <?php
 
-namespace Motia\TransExport\Commands;
+namespace Motia\TranslationsManager\Commands;
 
 use Illuminate\Support\Facades\Artisan;
+use Motia\TranslationsManager\Decoder;
 use Symfony\Component\Yaml\Yaml;
 
 class ImportFrontendTranslations extends BaseCommand {
@@ -12,11 +13,22 @@ class ImportFrontendTranslations extends BaseCommand {
      * @throws \Exception
      */
     public function handle() {
+        $laravelFilesNotExisting = [];
         foreach ($this->locales() as $locale) {
             $this->importLocal($locale);
+            $path = $this->resolveLaravelFile($locale);
+            if (file_exists($path)) {
+              $laravelFilesNotExisting[] = $path;
+            }
         }
 
         Artisan::call('translations:import');
+
+        if ($this->shouldUnlinkPhpFile()) {
+          foreach ($laravelFilesNotExisting as $path) {
+            unlink($path);
+          }
+        }
     }
 
     /**
@@ -42,9 +54,10 @@ class ImportFrontendTranslations extends BaseCommand {
     }
 
     private function parseFile($file) {
-        if (strtolower($this->exportFormat()) === 'json') {
-            return json_decode(file_get_contents($file), true);
-        }
-        return Yaml::parseFile($file);
+      $decoder = new Decoder();
+      if (strtolower($this->exportFormat()) === 'json') {
+        return $decoder->decodeFromJsonFile($file);
+      }
+      return $decoder->decodeFromYamlFile($file);
     }
 }
