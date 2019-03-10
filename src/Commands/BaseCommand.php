@@ -35,7 +35,7 @@ abstract class BaseCommand extends Command
             throw new \InvalidArgumentException('invalid type '.$type);
         }
 
-        $dir = config("trans-export.$type.dir");
+        $dir = config("translations-port.$type.dir");
 
         if (!$dir) {
             throw new \Exception("$type directory not configured");
