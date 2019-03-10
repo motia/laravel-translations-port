@@ -7,7 +7,7 @@ use Motia\TranslationsPort\Decoder;
 use Symfony\Component\Yaml\Yaml;
 
 class ImportFrontendTranslations extends BaseCommand {
-    protected $signature = 'trans:fe2be';
+    protected $signature = 'trans:fe2be {group}';
 
     /**
      * @throws \Exception

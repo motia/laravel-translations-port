@@ -3,19 +3,35 @@
 namespace Motia\TranslationsPort\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
 
 abstract class BaseCommand extends Command
 {
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
     protected function getTranslationKey() {
-        return config('translations-port.group');
+        $group = $this->argument('group')
+            ?: config('translations-port.groups')[0];
+
+        if (!$group) {
+            throw new \Exception('no translations groups configured');
+        }
+        return $group;
     }
 
+    /**
+     * @param $locale
+     * @return string
+     * @throws \Exception
+     */
     protected function resolveLaravelFile($locale) {
         return resource_path('lang/'.$locale.'/'.$this->getTranslationKey().'.php');
     }
 
     protected function locales() {
-        return array_wrap(config('translations-port.locales'));
+        return Arr::wrap(config('translations-port.locales'));
     }
 
     protected function exportFormat()
