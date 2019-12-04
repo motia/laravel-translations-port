@@ -29,7 +29,7 @@ php artisan trans:import
 * Missing translations
 This package comes with a controller to add missing translations and a helper function to add it to your routes.
  
-```
+```php
 // routes/api.php
 <?php
 
@@ -42,7 +42,7 @@ TranslationsPortController::routes([
 
 ```
 
-```
+```js
 // on your client app
 axios.post('/missing', {
     key: 'namespaced.key',
